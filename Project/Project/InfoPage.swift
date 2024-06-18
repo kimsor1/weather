@@ -32,7 +32,8 @@ struct InfoPage: View {
                     Button("다음으로 가기") {
                         if !nickname.isEmpty {
                             Task {
-                                await insertuserinfo(nickname: nickname)
+                                let query = UserVM()
+                                query.insertDB(nickname: nickname)
                                 navigateToNextView = true
                             }
                         } else {
@@ -49,13 +50,6 @@ struct InfoPage: View {
                 }
             })
         })
-    }
-    func insertuserinfo(nickname:String){
-        let query = UserVM()
-        let url = "http://127.0.0.1:5000/insertuserinfo?nickname=\(nickname)"
-        Task {
-            try await query.insertUserInfo(url:url)
-        }
     }
 }
 

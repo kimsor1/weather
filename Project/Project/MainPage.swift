@@ -23,7 +23,10 @@ struct MainPage: View {
         NavigationView(content: {
             VStack(content: {
                 Spacer()
-                Text("\(nickname) 님 안녕하세요 :)")
+                Text("🙋🏻‍♂️ \(nickname) 님 안녕하세요 🙋🏻‍♀️")
+                    .bold()
+                Spacer()
+                Divider()
                 Spacer()
                 Text("오늘의 날씨")
                     .bold()
@@ -35,20 +38,20 @@ struct MainPage: View {
                 Spacer()
                 Text("오늘의 날씨는 \(weatherInfo)")
                 Spacer()
-                Text("현재 온도 : \(cityTemperature)")
+                Text("현재 온도 : \(cityTemperature)°C")
                 Spacer()
                 HStack(content: {
                     Spacer()
-                    Text("\(cityMinTemp)")
+                    Text("최저 온도 : \(cityMinTemp)°C")
                     Spacer()
-                    Text("\(cityMaxTemp)")
+                    Text("최고 온도 : \(cityMaxTemp)°C")
                     Spacer()
                 })
                 Spacer()
                 Divider()
                 Spacer()
                 
-                NavigationLink("오늘 뭐입지?", destination: RecommendationView())
+                NavigationLink("오늘 뭐입지?", destination: RecommendationView(cityTemperature: $cityTemperature, weatherInfo: $weatherInfo,cityweather: $cityWeather))
                     .frame(width: 150,height: 50)
                     .background(Color(.black))
                     .foregroundColor(.white)
@@ -60,10 +63,9 @@ struct MainPage: View {
         .onAppear{
             let queryModel = QueryModel(cityName: $cityName, cityWeather: $cityWeather, cityTemperature: $cityTemperature, cityMaxTemp: $cityMaxTemp, cityMinTemp: $cityMinTemp, weatherInfo : $weatherInfo, weatherIcon: $weatherIcon)
             let userQuery = UserVM()
-            let url = "http://127.0.0.1:5000/selectuserinfo"
             Task{
                 await queryModel.downloadItems()
-                nickname = try await userQuery.selectUserInfo(url: url)
+                nickname = userQuery.queryDB()
             }
         }
         .navigationBarBackButtonHidden()

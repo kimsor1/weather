@@ -9,6 +9,8 @@ import Foundation
 
 struct ClothesVM{
     func insertOuter(outer : [String]) async throws{
+        var nickname = usernickname()
+        
         //"패딩", "겨울코트", "경량패딩", "트렌치코트", "얇은코트", "가디건", "후드집업", "얇은가디건"
         var padding : Int = 0
         var wintercoat : Int = 0
@@ -42,12 +44,14 @@ struct ClothesVM{
             }
         }
         
-        let url = "http://127.0.0.1:5000//insertouter?padding=\(padding)&wintercoat=\(wintercoat)&lightpadding=\(lightpadding)&trenchcoat=\(trenchcoat)&thincoat=\(thincoat)&cardigan=\(cardigan)&zipup=\(zipup)&thincardigan=\(thincardigan)"
+        let url = "http://127.0.0.1:5000//insertouter?nickname=\(nickname)&padding=\(padding)&wintercoat=\(wintercoat)&lightpadding=\(lightpadding)&trenchcoat=\(trenchcoat)&thincoat=\(thincoat)&cardigan=\(cardigan)&zipup=\(zipup)&thincardigan=\(thincardigan)"
         let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
         try JSONDecoder().decode([Dictionary<String,String>].self, from: data)
     }
     
     func insertTop(top : [String]) async throws{
+        var nickname = usernickname()
+        
         //"민소매","반팔","얇은 긴팔","긴팔 티셔츠","후드티","맨투맨","니트"
         var sleeveless : Int = 0
         var shortsleeve : Int = 0
@@ -77,13 +81,15 @@ struct ClothesVM{
                 print("")
             }
             
-            let url = "http://127.0.0.1:5000/inserttop?sleeveless=\(sleeveless)&shortsleeve=\(shortsleeve)&thinlongsleeve=\(thinlongsleeve)&longsleeveshirt=\(longsleeveshirt)&hoodie=\(hoodie)&sweatshirt=\(sweatshirt)&knit=\(knit)"
+            let url = "http://127.0.0.1:5000/inserttop?nickname=\(nickname)&sleeveless=\(sleeveless)&shortsleeve=\(shortsleeve)&thinlongsleeve=\(thinlongsleeve)&longsleeveshirt=\(longsleeveshirt)&hoodie=\(hoodie)&sweatshirt=\(sweatshirt)&knit=\(knit)"
             let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
             try JSONDecoder().decode([Dictionary<String,String>].self, from: data)
         }
     }
     
     func insertBottom(bottom : [String]) async throws{
+        var nickname = usernickname()
+        
 //        "반바지", "면바지&청바지", "기모바지"
         var shorts : Int = 0
         var jeans : Int = 0
@@ -101,10 +107,19 @@ struct ClothesVM{
                 print("")
             }
             
-            let url = "http://127.0.0.1:5000/insertbottom?shorts=\(shorts)&jeans=\(jeans)&fleecepants=\(fleecepants)"
+            let url = "http://127.0.0.1:5000/insertbottom?nickname=\(nickname)&shorts=\(shorts)&jeans=\(jeans)&fleecepants=\(fleecepants)"
             let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
             try JSONDecoder().decode([Dictionary<String,String>].self, from: data)
         }
+    }
+    
+    func usernickname() -> String{
+        var nickname = ""
+        
+        let query = UserVM()
+        nickname = query.queryDB()
+        
+        return nickname
     }
     
 }

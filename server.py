@@ -66,6 +66,7 @@ def select():
 @app.route("/insertouter")
 def insert_outer():
     # Request for Get
+    nickname = request.args.get("nickname")
     padding = int(request.args.get("padding"))
     wintercoat = int(request.args.get("wintercoat"))
     lightpadding = int(request.args.get("lightpadding"))
@@ -88,9 +89,9 @@ def insert_outer():
     curs = conn.cursor()
 
     # SQL 문장
-    sql = '''INSERT INTO chooseouter (padding, wintercoat, lightpadding, trenchcoat, thincoat, cardigan, zipup, thincardigan)
-             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)'''
-    curs.execute(sql, (padding, wintercoat, lightpadding, trenchcoat, thincoat, cardigan, zipup, thincardigan))
+    sql = '''INSERT INTO chooseouter (nickname,padding, wintercoat, lightpadding, trenchcoat, thincoat, cardigan, zipup, thincardigan)
+             VALUES (%s,%s, %s, %s, %s, %s, %s, %s, %s)'''
+    curs.execute(sql, (nickname,padding, wintercoat, lightpadding, trenchcoat, thincoat, cardigan, zipup, thincardigan))
     conn.commit()
     conn.close()
 
@@ -99,6 +100,7 @@ def insert_outer():
 @app.route("/inserttop")
 def insert_top():
     # Request for Get
+    nickname = request.args.get("nickname")   
     sleeveless = int(request.args.get("sleeveless"))
     shortsleeve = int(request.args.get("shortsleeve"))
     thinlongsleeve = int(request.args.get("thinlongsleeve"))
@@ -120,9 +122,9 @@ def insert_top():
     curs = conn.cursor()
 
     # SQL 문장
-    sql = '''INSERT INTO choosetop (sleeveless, shortsleeve, thinlongsleeve, longsleeveshirt, hoodie, sweatshirt, knit)
-             VALUES (%s, %s, %s, %s, %s, %s, %s)'''
-    curs.execute(sql, (sleeveless, shortsleeve, thinlongsleeve, longsleeveshirt, hoodie, sweatshirt, knit))
+    sql = '''INSERT INTO choosetop (nickname,sleeveless, shortsleeve, thinlongsleeve, longsleeveshirt, hoodie, sweatshirt, knit)
+             VALUES (%s,%s, %s, %s, %s, %s, %s, %s)'''
+    curs.execute(sql, (nickname,sleeveless, shortsleeve, thinlongsleeve, longsleeveshirt, hoodie, sweatshirt, knit))
     conn.commit()
     conn.close()
 
@@ -131,6 +133,7 @@ def insert_top():
 @app.route("/insertbottom")
 def insert_bottom():
     # Request for Get
+    nickname = request.args.get("nickname")   
     shorts = int(request.args.get("shorts"))
     jeans = int(request.args.get("jeans"))
     fleecepants = int(request.args.get("fleecepants"))
@@ -148,9 +151,9 @@ def insert_bottom():
     curs = conn.cursor()
 
     # SQL 문장
-    sql = '''INSERT INTO choosebottom (shorts, jeans, fleecepants)
-             VALUES (%s, %s, %s)'''
-    curs.execute(sql, (shorts, jeans, fleecepants))
+    sql = '''INSERT INTO choosebottom (nickname,shorts, jeans, fleecepants)
+             VALUES (%s, %s, %s, %s)'''
+    curs.execute(sql, (nickname,shorts, jeans, fleecepants))
     conn.commit()
     conn.close()
 

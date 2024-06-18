@@ -17,6 +17,7 @@ struct SelectView: View {
             VStack(content: {
                 Text("선택 항목:")
                     .bold()
+                    .padding()
                 
                 ForEach(options, id: \.self) { option in
                     SquareButton(selectedOptions: $selectedOptions, label: option)
@@ -30,9 +31,11 @@ struct SelectView: View {
                     }
                     navigateToNextView = true
                 }
+                .padding()
                 .navigationDestination(isPresented: $navigateToNextView) {
                     TopSelect()
                 }
+                
             })
         }
         .navigationBarBackButtonHidden(true) // 뒤로가기 버튼 숨기기
@@ -49,6 +52,7 @@ struct SelectView: View {
             VStack(content: {
                 Text("선택 항목:")
                     .bold()
+                    .padding()
                 
                 ForEach(options, id: \.self) { option in
                     SquareButton(selectedOptions: $selectedOptions, label: option)
@@ -62,6 +66,7 @@ struct SelectView: View {
                     }
                     navigateToNextView = true
                 }
+                .padding()
                 .navigationDestination(isPresented: $navigateToNextView) {
                     BottomSelect()
                 }
@@ -78,6 +83,7 @@ struct SelectView: View {
             VStack(content: {
                 Text("선택 항목 :")
                     .bold()
+                    .padding()
                 
                 ForEach(options,id : \.self) {option in
                     SquareButton(selectedOptions: $selectedOptions, label: option)
@@ -91,6 +97,7 @@ struct SelectView: View {
                     }
                     navigateToNextView = true
                 }
+                .padding()
                 .navigationDestination(isPresented: $navigateToNextView) {
                     MainPage()
                 }

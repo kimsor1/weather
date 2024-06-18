@@ -21,6 +21,7 @@
 		9378063F2C2016320050F90D /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9378063E2C2016320050F90D /* UserVM.swift */; };
 		937806432C20318A0050F90D /* ClothesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937806422C20318A0050F90D /* ClothesVM.swift */; };
 		937806452C2083DB0050F90D /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937806442C2083DB0050F90D /* RecommendationView.swift */; };
+		93BF494B2C21112D004320BF /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BF494A2C21112D004320BF /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		9378063E2C2016320050F90D /* UserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
 		937806422C20318A0050F90D /* ClothesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesVM.swift; sourceTree = "<group>"; };
 		937806442C2083DB0050F90D /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
+		93BF494A2C21112D004320BF /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				937806202C1A997B0050F90D /* DBModel.swift */,
 				937806222C1A99910050F90D /* JSONModel.swift */,
+				93BF494A2C21112D004320BF /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				9378063B2C1FF5960050F90D /* SelectView.swift in Sources */,
 				937806432C20318A0050F90D /* ClothesVM.swift in Sources */,
 				9378060C2C1A98FB0050F90D /* ContentView.swift in Sources */,
+				93BF494B2C21112D004320BF /* UserModel.swift in Sources */,
 				9378060A2C1A98FB0050F90D /* ProjectApp.swift in Sources */,
 				9378061F2C1A99620050F90D /* QureyModel.swift in Sources */,
 				937806322C1DD6AA0050F90D /* SplashView.swift in Sources */,

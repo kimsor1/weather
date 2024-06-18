@@ -55,12 +55,6 @@ struct QueryModel{
     
     func itemDownloaded(items: [DBModel]) {
         
-        print(items[0].r_name)
-        print(items[0].r_main)
-        print("\(Int(items[0].r_temp - 273.15))°C")
-        print("최고온도 : \(Int(items[0].r_temp_max - 273.15))℃")
-        print("최저온도 : \(Int(items[0].r_temp_min - 273.15))℃")
-        
         switch items[0].r_main{
         case "Thunderstorm":
             weatherInfo = "뇌우가 올 것으로 예상됩니다./n우산을 꼭 챙겨서 외출하세요!"
@@ -84,9 +78,9 @@ struct QueryModel{
         
         cityName = items[0].r_name
         cityWeather = items[0].r_main
-        cityTemperature = "\(Int(items[0].r_temp - 273.15))°C"
-        cityMaxTemp = "최고온도 : \(Int(items[0].r_temp_max - 273.15))℃"
-        cityMinTemp = "최저온도 : \(Int(items[0].r_temp_min - 273.15))℃"
+        cityTemperature = "\(Int(items[0].r_temp - 273.15))"
+        cityMaxTemp = "\(Int(items[0].r_temp_max - 273.15))"
+        cityMinTemp = "\(Int(items[0].r_temp_min - 273.15))"
         
     }
     
