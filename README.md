@@ -50,7 +50,7 @@
 <br>
 
 > ## SFD
-<img width="600" alt="스크린샷 2024-06-18 오후 6 00 58" src="">
+<img width="600" alt="스크린샷 2024-06-18 오후 6 00 58" src="https://github.com/kimsor1/weather/blob/main/Project/Project/Assets.xcassets/sfd.imageset/sfd.png">
 
 <br>
 
